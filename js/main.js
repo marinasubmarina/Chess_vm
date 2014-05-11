@@ -167,7 +167,7 @@ function MakeMove(_targetcCell){
         $selectedCell.toggleClass('selected');
         $selectedCell = null;
         if (_targetcCell.hasClass('attack')){
-           console.log('tadadadada');
+           console.log('tadadadada'); //  НЕЕЕ ОСТАВЛЯЯЯТЬ В ПРОГЕ, А ТО СТРАННО
         }
         else {
             ChangeTeam();
@@ -179,13 +179,18 @@ function DropAllowedStep(){
     $('div').removeClass('allowedStep').removeClass('attack');
 }
 //Ходы шахмат:
+
 //пешки
 function PawnStep(){
     if ($selectedCell.attr('color') == 'white') {
         if ($selectedCell.attr('x') == 6) {
             $('[x=' + ($selectedCell.attr('x') - 2) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
         }
-        $('[x=' + ($selectedCell.attr('x') - 1) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
+        // проверка. чтобы не выделял занятые клетки как возможность хода.
+        if ($('[x=' + ($selectedCell.attr('x') - 1) + ']' + '[y=' + $selectedCell.attr('y') + ']')[0].innerText == ''){
+            $('[x=' + ($selectedCell.attr('x') - 1) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
+        }
+
         //левая диагональ   \.
         if ( $('[x=' + ($selectedCell.attr('x') - 1) + ']' + '[y=' + ($selectedCell.attr('y')-1) + ']').attr('color')=='black') {
             $('[x=' + ($selectedCell.attr('x') - 1) + ']' + '[y=' + ($selectedCell.attr('y') - 1) + ']').addClass('allowedStep').addClass('attack');
@@ -196,16 +201,19 @@ function PawnStep(){
         }
     }
     if($selectedCell.attr('color') == 'black') {
-        console.log($selectedCell);
+        console.log($selectedCell); // ТОЖЕ УДАЛИТЬ ПОТОООООООМММ!!!!!!1
         if ($selectedCell.attr('x') == 1) {
             $('[x=' +($selectedCell.attr('x')-(-2))+ ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
         }
-        $('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
+        // проверка. чтобы не выделял занятые клетки как возможность хода.
+        if ($('[x=' + ($selectedCell.attr('x') - (-1)) + ']' + '[y=' + $selectedCell.attr('y') + ']')[0].innerText == '') {
+            $('[x=' + ($selectedCell.attr('x') - (-1)) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
+        }
         // влево вниз  /'
         if ( $('[x=' + ($selectedCell.attr('x') - (-1)) + ']' + '[y=' + ($selectedCell.attr('y')-1) + ']').attr('color')=='white') {
-            console.log('11');
-            $('[x=' + ($selectedCell.attr('x') - (1)) + ']' + '[y=' + ($selectedCell.attr('y') - 1) + ']').addClass('allowedStep').addClass('attack');
+            $('[x=' + ($selectedCell.attr('x') - (-1)) + ']' + '[y=' + ($selectedCell.attr('y') - 1) + ']').addClass('allowedStep').addClass('attack');
         }
+
         // вправо вниз '\
         if ( $('[x=' + ($selectedCell.attr('x') - (- 1)) + ']' + '[y=' + ($selectedCell.attr('y')-(-1)) + ']').attr('color')=='white') {
             $('[x=' + ($selectedCell.attr('x') - (-1)) + ']' + '[y=' + ($selectedCell.attr('y') - (-1)) + ']').addClass('allowedStep').addClass('attack');
