@@ -234,8 +234,8 @@ function RookStep(){
             }
 
         //вниз
-        var i =1;
-            while ( ($('[x=' + ($selectedCell.attr('x') - (- i)))) < 7){
+        var i =0;
+            while ( ($('[x=' + ($selectedCell.attr('x') - (- i))+']')).attr('x') < 8){
                if ($('[x=' + ($selectedCell.attr('x') - (- i)) + ']' + '[y=' + $selectedCell.attr('y') + ']')[0].innerText == ''){
                    console.log('down');
                    console.log($selectedCell.attr('x') - (- i));
