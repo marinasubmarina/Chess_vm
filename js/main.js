@@ -227,7 +227,7 @@ function RookStep(){
         // по вертикали
         // вверх
         var i =1;
-            while ($('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']')[0].innerText == ''){
+            while (IsCellEmpty(('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']'))){
                 console.log('up');
                 $('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
                 i++;
@@ -236,7 +236,7 @@ function RookStep(){
         //вниз
         var i =0;
             while ( ($('[x=' + ($selectedCell.attr('x') - (- i))+']')).attr('x') < 8){
-               if ($('[x=' + ($selectedCell.attr('x') - (- i)) + ']' + '[y=' + $selectedCell.attr('y') + ']')[0].innerText == ''){
+               if (IsCellEmpty(('[x=' + ($selectedCell.attr('x') - (- i)) + ']' + '[y=' + $selectedCell.attr('y') + ']'))){
                    console.log('down');
                    console.log($selectedCell.attr('x') - (- i));
                    $('[x=' + ($selectedCell.attr('x') - (- i)) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
@@ -245,9 +245,10 @@ function RookStep(){
             }
         // по горизонтали
         // вправо
-     /*   var i = 0;
-            while ( $('[y=' + ($selectedCell.attr('y') -(-i)) + ']') <= 7){
-                if ($('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -(-i)) + ']')[0].innerText == ''){
+
+        var i = 1;
+            while ( $('[x=' + ($selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -(-i)) + ']')).attr('y') <= 7){
+                if (IsCellEmpty('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -(-i)) + ']')){
                 console.log('right');
                 $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -(-i)) + ']').addClass('allowedStep');
                 }else {
@@ -257,15 +258,15 @@ function RookStep(){
             }
 
         // влево
-   var i = 0;
-            while ( $('[y=' + ($selectedCell.attr('y') -i) + ']') >= 0){
-            if ($('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') - i) + ']')[0].innerText == ''){
-                console.log('left');
-                $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') - i) + ']').addClass('allowedStep');
+   var i = 1;
+        while ( $('[x=' + ($selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -i) + ']')).attr('y') >= 0){
+            if (IsCellEmpty('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -i) + ']')){
+                console.log('right');
+                $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -i) + ']').addClass('allowedStep');
             }else {
                 break;
             }
             i++;
-        } */
+        }
     }
 }
