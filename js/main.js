@@ -11,13 +11,14 @@ $(document).ready(function(){
             if ($selectedCell.attr('type')=='pawn'){
                 PawnStep();
             }
+            if ($selectedCell.attr('type')=='Rook'){
+                RookStep();
+            }
         }
         else{
             if ($selectedCell != null){
-                console.log($(this));
                 MakeMove($(this));
             }
-
         }
     })
 })
@@ -91,8 +92,6 @@ function CreateChess(){
 function AddFugure (x,y,_figureType,_color,_type) {
     $('[x='+x+']'+'[y='+y+']').append(_figureType);
     $('[x='+x+']'+'[y='+y+']').attr('type',_type).attr('color',_color);
-
-
 }
 
 function IsCellEmpty(cell){
@@ -103,7 +102,6 @@ function IsCellEmpty(cell){
         return false;
     }
 }
-
 function DrawMap(){
     for (var i = 0; i < 8; i++) {
         var line = [];
@@ -119,7 +117,6 @@ function DrawMap(){
         PrintMassive(line);
     }
 }
-
 function PrintMassive(_array){
     var result='';
     for (var  i=0; i<_array.length; i++){
@@ -127,7 +124,6 @@ function PrintMassive(_array){
     }
     console.log(result);
 }
-
 
 var currentTeam = {
     white : 'white',
@@ -183,8 +179,11 @@ function DropAllowedStep(){
 //пешки
 function PawnStep(){
     if ($selectedCell.attr('color') == 'white') {
+
         if ($selectedCell.attr('x') == 6) {
+            if ($('[x=' + ($selectedCell.attr('x') - 2) + ']' + '[y=' + $selectedCell.attr('y') + ']')[0].innerText == ''){
             $('[x=' + ($selectedCell.attr('x') - 2) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
+            }
         }
         // проверка. чтобы не выделял занятые клетки как возможность хода.
         if ($('[x=' + ($selectedCell.attr('x') - 1) + ']' + '[y=' + $selectedCell.attr('y') + ']')[0].innerText == ''){
@@ -201,9 +200,10 @@ function PawnStep(){
         }
     }
     if($selectedCell.attr('color') == 'black') {
-        console.log($selectedCell); // ТОЖЕ УДАЛИТЬ ПОТОООООООМММ!!!!!!1
         if ($selectedCell.attr('x') == 1) {
+            if ($('[x=' +($selectedCell.attr('x')-(-2))+ ']' + '[y=' + $selectedCell.attr('y') + ']')[0].innerText == '') {
             $('[x=' +($selectedCell.attr('x')-(-2))+ ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
+            }
         }
         // проверка. чтобы не выделял занятые клетки как возможность хода.
         if ($('[x=' + ($selectedCell.attr('x') - (-1)) + ']' + '[y=' + $selectedCell.attr('y') + ']')[0].innerText == '') {
@@ -218,5 +218,54 @@ function PawnStep(){
         if ( $('[x=' + ($selectedCell.attr('x') - (- 1)) + ']' + '[y=' + ($selectedCell.attr('y')-(-1)) + ']').attr('color')=='white') {
             $('[x=' + ($selectedCell.attr('x') - (-1)) + ']' + '[y=' + ($selectedCell.attr('y') - (-1)) + ']').addClass('allowedStep').addClass('attack');
         }
+    }
+}
+//ладьи
+function RookStep(){
+    if ($selectedCell.attr('color') == 'white') {
+        // Снова Повторения ( пыталась с for 1-7 , а дальше ифы. показывает только 1.
+        // по вертикали
+        // вверх
+        var i =1;
+            while ($('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']')[0].innerText == ''){
+                console.log('up');
+                $('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
+                i++;
+            }
+
+        //вниз
+        var i =1;
+            while ( ($('[x=' + ($selectedCell.attr('x') - (- i)))) < 7){
+               if ($('[x=' + ($selectedCell.attr('x') - (- i)) + ']' + '[y=' + $selectedCell.attr('y') + ']')[0].innerText == ''){
+                   console.log('down');
+                   console.log($selectedCell.attr('x') - (- i));
+                   $('[x=' + ($selectedCell.attr('x') - (- i)) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
+               }
+               i++;
+            }
+        // по горизонтали
+        // вправо
+     /*   var i = 0;
+            while ( $('[y=' + ($selectedCell.attr('y') -(-i)) + ']') <= 7){
+                if ($('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -(-i)) + ']')[0].innerText == ''){
+                console.log('right');
+                $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -(-i)) + ']').addClass('allowedStep');
+                }else {
+                    break;
+                }
+                i++;
+            }
+
+        // влево
+   var i = 0;
+            while ( $('[y=' + ($selectedCell.attr('y') -i) + ']') >= 0){
+            if ($('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') - i) + ']')[0].innerText == ''){
+                console.log('left');
+                $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') - i) + ']').addClass('allowedStep');
+            }else {
+                break;
+            }
+            i++;
+        } */
     }
 }
