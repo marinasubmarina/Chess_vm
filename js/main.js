@@ -232,6 +232,11 @@ function RookStep(){
                 $('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
                 i++;
             }
+        if ((IsCellEmpty(('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']')))==false){
+            if (($('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']')).attr('color')==currentTeam.enemy){
+                $('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('attack').addClass('allowedStep');
+            }
+        }
 
         //вниз
         var i =0;
@@ -243,6 +248,7 @@ function RookStep(){
                }
                i++;
             }
+
         // по горизонтали
         // вправо
 
