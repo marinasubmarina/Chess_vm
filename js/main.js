@@ -24,6 +24,9 @@ $(document).ready(function(){
             if ($selectedCell.attr('type')=='Knight'){
                 KnightStep();
             }
+            if ($selectedCell.attr('type')=='King'){
+                KingStep();
+            }
         }
         else{
             if ($selectedCell != null){
@@ -454,3 +457,73 @@ function horse ( i, j, m, n){
 */
 
 //король
+function KingStep(){
+    //вверх
+    if ((($selectedCell.attr('x')-1)>-1)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + $selectedCell.attr('y')+ ']'))){
+        $('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + $selectedCell.attr('y')+ ']').addClass('allowedStep');
+    }else{
+        if (($('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + $selectedCell.attr('y') + ']')).attr('color')==currentTeam.enemy){
+            $('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + $selectedCell.attr('y')+ ']').addClass('allowedStep').addClass('attack');
+        }
+    }
+    //вниз
+    if ((($selectedCell.attr('x')-(-1))<8)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + $selectedCell.attr('y')+ ']'))){
+        $('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + $selectedCell.attr('y')+ ']').addClass('allowedStep');
+    }else{
+        if (($('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + $selectedCell.attr('y') + ']')).attr('color')==currentTeam.enemy){
+            $('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + $selectedCell.attr('y')+ ']').addClass('allowedStep').addClass('attack');
+        }
+    }
+    // вправо
+    if ((($selectedCell.attr('y')-(-1))<8)&&(IsCellEmpty('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']'))){
+        $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']').addClass('allowedStep');
+    }else{
+        if (($('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-(-1)) + ']')).attr('color')==currentTeam.enemy){
+            $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']').addClass('allowedStep').addClass('attack');
+        }
+    }
+
+    //влево
+    if ((($selectedCell.attr('y')-1)>-1)&&(IsCellEmpty('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']'))){
+        $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']').addClass('allowedStep');
+    }else{
+        if (($('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-1) + ']')).attr('color')==currentTeam.enemy){
+            $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']').addClass('allowedStep').addClass('attack');
+        }
+    }
+
+    // / up
+    if ((($selectedCell.attr('x')-1)>-1)&&(($selectedCell.attr('y')-(-1))<8)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']'))){
+        $('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']').addClass('allowedStep');
+    }else{
+        if (($('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + ($selectedCell.attr('y')-(-1)) + ']')).attr('color')==currentTeam.enemy){
+            $('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']').addClass('allowedStep').addClass('attack');
+        }
+    }
+    // \up
+    if ((($selectedCell.attr('x')-1)>-1)&&(($selectedCell.attr('y')-1)>-1)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']'))){
+        $('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']').addClass('allowedStep');
+    }else{
+        if (($('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + ($selectedCell.attr('y')-1) + ']')).attr('color')==currentTeam.enemy){
+            $('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']').addClass('allowedStep').addClass('attack');
+        }
+    }
+
+    // \down
+    if ((($selectedCell.attr('x')-(-1))<8)&&(($selectedCell.attr('y')-(-1))<8)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']'))){
+        $('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']').addClass('allowedStep');
+    }else{
+        if (($('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + ($selectedCell.attr('y')-(-1)) + ']')).attr('color')==currentTeam.enemy){
+            $('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']').addClass('allowedStep').addClass('attack');
+        }
+    }
+
+    // /down
+    if ((($selectedCell.attr('x')-(-1))<8)&&(($selectedCell.attr('y')-1)>-1)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']'))){
+        $('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']').addClass('allowedStep');
+    }else{
+        if (($('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + ($selectedCell.attr('y')-1) + ']')).attr('color')==currentTeam.enemy){
+            $('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']').addClass('allowedStep').addClass('attack');
+        }
+    }
+}
