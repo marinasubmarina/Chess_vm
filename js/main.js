@@ -222,57 +222,62 @@ function PawnStep(){
 }
 //ладьи
 function RookStep(){
-    if ($selectedCell.attr('color') == 'white') {
-        // Снова Повторения ( пыталась с for 1-7 , а дальше ифы. показывает только 1.
-        // по вертикали
-        // вверх
-        var i =1;
-            while (IsCellEmpty(('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']'))){
-                console.log('up');
-                $('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
-                i++;
-            }
-        if ((IsCellEmpty(('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']')))==false){
-            if (($('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']')).attr('color')==currentTeam.enemy){
-                $('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('attack').addClass('allowedStep');
-            }
-        }
-
-        //вниз
-        var i =0;
-            while ( ($('[x=' + ($selectedCell.attr('x') - (- i))+']')).attr('x') < 8){
-               if (IsCellEmpty(('[x=' + ($selectedCell.attr('x') - (- i)) + ']' + '[y=' + $selectedCell.attr('y') + ']'))){
-                   console.log('down');
-                   console.log($selectedCell.attr('x') - (- i));
-                   $('[x=' + ($selectedCell.attr('x') - (- i)) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
-               }
-               i++;
-            }
-
-        // по горизонтали
-        // вправо
-
-        var i = 1;
-            while ( $('[x=' + ($selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -(-i)) + ']')).attr('y') <= 7){
-                if (IsCellEmpty('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -(-i)) + ']')){
-                console.log('right');
-                $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -(-i)) + ']').addClass('allowedStep');
-                }else {
-                    break;
-                }
-                i++;
-            }
-
-        // влево
-   var i = 1;
-        while ( $('[x=' + ($selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -i) + ']')).attr('y') >= 0){
-            if (IsCellEmpty('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -i) + ']')){
-                console.log('right');
-                $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -i) + ']').addClass('allowedStep');
-            }else {
-                break;
-            }
+    // по вертикали
+    // вверх (for white)
+    var i =1;
+    if ($selectedCell.attr('x') !=0) {
+        while ((($selectedCell.attr('x') - i)!=-1)&&(IsCellEmpty(('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']')))) {
+            console.log('up');
+            $('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
             i++;
         }
+        // attack (not end of board + not empty + enemy)
+        if ((($selectedCell.attr('x') - i)!=-1)&&(IsCellEmpty(('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']'))==false)&&(($('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']')).attr('color')==currentTeam.enemy)){
+            $('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('attack').addClass('allowedStep');
+        }
     }
+
+    //вниз
+    var i =1;
+    if ($selectedCell.attr('x') !=7){
+        while ((($selectedCell.attr('x') - (-i))!=8)&&(IsCellEmpty(('[x=' + ($selectedCell.attr('x') - (-i)) + ']' + '[y=' + $selectedCell.attr('y') + ']')))) {
+            console.log('down'); console.log(i);
+            $('[x=' + ($selectedCell.attr('x') - (-i)) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
+            i++;
+        }
+        //attack
+        if ((($selectedCell.attr('x') - (-i))!=8)&&(IsCellEmpty(('[x=' + ($selectedCell.attr('x') - (-i)) + ']' + '[y=' + $selectedCell.attr('y') + ']'))==false)&&(($('[x=' + ($selectedCell.attr('x') - (-i)) + ']' + '[y=' + $selectedCell.attr('y') + ']')).attr('color')==currentTeam.enemy)){
+            $('[x=' + ($selectedCell.attr('x') - (-i)) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('attack').addClass('allowedStep');
+        }
+    }
+
+    // по горизонтали
+    // вправо (for white)
+    var i = 1;
+    if ($selectedCell.attr('y') !=7){
+        while ((($selectedCell.attr('y') - (-i))!=8)&&(IsCellEmpty(('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -(-i))+ ']')))) {
+            console.log('right'); console.log(i);
+            $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') - (-i))+ ']').addClass('allowedStep');
+            i++;
+        }
+        //attack
+        if ((($selectedCell.attr('y') - (-i))!=8)&&(IsCellEmpty(('[x=' + $selectedCell.attr('x') + ']' + '[y=' + $selectedCell.attr('y') + ']'))==false)&&(($('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-(-i))+ ']')).attr('color')==currentTeam.enemy)){
+            $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -(-i))+ ']').addClass('attack').addClass('allowedStep');
+        }
+    }
+
+    // влево
+    var i = 1;
+    if ($selectedCell.attr('y') !=0) {
+        while ((($selectedCell.attr('y') - i) != -1) && (IsCellEmpty(('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') - i) + ']')))) {
+            console.log('left');
+            console.log(i);
+            $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') - i) + ']').addClass('allowedStep');
+            i++;
+        }
+        if ((($selectedCell.attr('y') - i) != -1) && (IsCellEmpty(('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') - i) + ']')) == false) && (($('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') - i) + ']')).attr('color') == currentTeam.enemy)) {
+            $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') - i) + ']').addClass('attack').addClass('allowedStep');
+        }
+    }
+
 }
