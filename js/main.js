@@ -185,7 +185,6 @@ function DropAllowedStep(){
     $('div').removeClass('allowedStep').removeClass('attack');
 }
 //Ходы шахмат:
-
 //пешки
 function PawnStep(){
     if ($selectedCell.attr('color') == 'white') {
@@ -245,7 +244,6 @@ function RookStep(){
             $('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('attack').addClass('allowedStep');
         }
     }
-
     //вниз
     var i =1;
     if ($selectedCell.attr('x') !=7){
@@ -285,6 +283,26 @@ function RookStep(){
         }
     }
 }
+// все бы хорошо. но считает только 1 клетку вниз.
+/*
+ vertical (0, -1, 1);
+ vertical (7, 8, (-1));
+function vertical( a , b , i){
+    if ($selectedCell.attr('x') !=a){
+        while ((($selectedCell.attr('x') - i)!=b)&&(IsCellEmpty(('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']')))) {
+            $('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
+            i++;
+            console.log(($selectedCell.attr('x') - i));
+            console.log(i);
+        }
+        //attack
+        if ((($selectedCell.attr('x') - i)!=b)&&(IsCellEmpty(('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']'))==false)&&(($('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']')).attr('color')==currentTeam.enemy)){
+            $('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('attack').addClass('allowedStep');
+        }
+    }
+}
+*/
+
 //слоны
 function BishopStep(){
     //up-right
@@ -345,8 +363,12 @@ function BishopStep(){
 }
 //кони
 function KnightStep(){
+    //horse (2,1,0,8);
+    //horse (2,-1,0,8);
+
     var i= 2, j=1 // Г
-    if ((($selectedCell.attr('x')-i)>0)&&(($selectedCell.attr('y')-(-j))<8)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']'))){
+
+    if ((($selectedCell.attr('x')-i)>-1)&&(($selectedCell.attr('y')-(-j))<8)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']'))){
         $('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']').addClass('allowedStep');
     }else{
          if (($('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j)) + ']')).attr('color')==currentTeam.enemy){
@@ -355,7 +377,16 @@ function KnightStep(){
     }
 
     var i= 2, j=-1 // обратное Г
-    if ((($selectedCell.attr('x')-i)>0)&&(($selectedCell.attr('y')-(-j))>-1)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']'))){
+    if ((($selectedCell.attr('x')-i)>-1)&&(($selectedCell.attr('y')-(-j))>-1)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']'))){
+        $('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']').addClass('allowedStep');
+    }else{
+        if (($('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j)) + ']')).attr('color')==currentTeam.enemy){
+            $('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']').addClass('allowedStep').addClass('attack');
+        }
+    }
+    // Г кверхногами
+    var i= -2, j=1
+    if ((($selectedCell.attr('x')-i)<8)&&(($selectedCell.attr('y')-(-j))<8)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']'))){
         $('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']').addClass('allowedStep');
     }else{
         if (($('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j)) + ']')).attr('color')==currentTeam.enemy){
@@ -363,4 +394,63 @@ function KnightStep(){
         }
     }
 
+    var i= -2, j=-1
+    if ((($selectedCell.attr('x')-i)<8)&&(($selectedCell.attr('y')-(-j))>-1)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']'))){
+        $('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']').addClass('allowedStep');
+    }else{
+        if (($('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j)) + ']')).attr('color')==currentTeam.enemy){
+            $('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']').addClass('allowedStep').addClass('attack');
+        }
+    }
+
+    // в правую сторону
+    var i= -1, j=2
+    if ((($selectedCell.attr('x')-i)<8)&&(($selectedCell.attr('y')-(-j))<8)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']'))){
+        $('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']').addClass('allowedStep');
+    }else{
+        if (($('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j)) + ']')).attr('color')==currentTeam.enemy){
+            $('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']').addClass('allowedStep').addClass('attack');
+        }
+    }
+    var i= 1, j=2
+    if ((($selectedCell.attr('x')-i)>-1)&&(($selectedCell.attr('y')-(-j))<8)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']'))){
+        $('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']').addClass('allowedStep');
+    }else{
+        if (($('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j)) + ']')).attr('color')==currentTeam.enemy){
+            $('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']').addClass('allowedStep').addClass('attack');
+        }
+    }
+    // в левую сторону
+    var i= -1, j=-2
+    if ((($selectedCell.attr('x')-i)<8)&&(($selectedCell.attr('y')-(-j))>-1)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']'))){
+        $('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']').addClass('allowedStep');
+    }else{
+        if (($('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j)) + ']')).attr('color')==currentTeam.enemy){
+            $('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']').addClass('allowedStep').addClass('attack');
+        }
+    }
+    var i= 1, j=-2
+    if ((($selectedCell.attr('x')-i)>-1)&&(($selectedCell.attr('y')-(-j))>-1)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']'))){
+        $('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']').addClass('allowedStep');
+    }else{
+        if (($('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j)) + ']')).attr('color')==currentTeam.enemy){
+            $('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']').addClass('allowedStep').addClass('attack');
+        }
+    }
 }
+
+/*
+// все хорошо. научится бы знак свапать. или атрибуты
+
+function horse ( i, j, m, n){
+    if ((($selectedCell.attr('x')-i)>m)&&(($selectedCell.attr('y')-(-j))<n)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']'))){
+        $('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']').addClass('allowedStep');
+    }else{
+        if (($('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j)) + ']')).attr('color')==currentTeam.enemy){
+            $('[x=' + ($selectedCell.attr('x')-i) + ']' + '[y=' + ($selectedCell.attr('y')-(-j))+ ']').addClass('allowedStep').addClass('attack');
+        }
+    }
+}
+*/
+
+//король
