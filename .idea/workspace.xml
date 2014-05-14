@@ -46,9 +46,26 @@
       <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.5795982" vertical-offset="3223" max-vertical-offset="4335">
-              <caret line="283" column="0" selection-start-line="283" selection-start-column="0" selection-end-line="283" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.84090906" vertical-offset="1050" max-vertical-offset="1710">
+              <caret line="347" column="4" selection-start-line="347" selection-start-column="4" selection-end-line="347" selection-end-column="4" />
+              <folding>
+                <element signature="n#!!block;n#CreateBoard#0" expanded="false" />
+                <element signature="n#!!block;n#CreateChess#0" expanded="false" />
+                <element signature="n#!!block;n#AddFugure#0" expanded="false" />
+                <element signature="n#!!block;n#IsCellEmpty#0" expanded="false" />
+                <element signature="n#!!block;n#DrawMap#0" expanded="false" />
+                <element signature="n#!!block;n#PrintMassive#0" expanded="false" />
+                <element signature="e#3998#4086#0" expanded="false" />
+                <element signature="n#!!block;n#ChangeTeam#0" expanded="false" />
+                <element signature="n#!!block;n#SelectCell#0" expanded="false" />
+                <element signature="n#!!block;n#MakeMove#0" expanded="false" />
+                <element signature="n#!!block;n#RookStep#0" expanded="false" />
+                <element signature="n#!!block;n#BishopStep#0" expanded="false" />
+                <element signature="e#11706#12623#0" expanded="false" />
+                <element signature="e#12725#13622#0" expanded="false" />
+                <element signature="e#13727#14648#0" expanded="false" />
+                <element signature="e#14752#15653#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -302,7 +319,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1215" max-vertical-offset="1845">
           <caret line="235" column="14" selection-start-line="235" selection-start-column="14" selection-end-line="235" selection-end-column="14" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#CreateBoard#0" expanded="false" />
+            <element signature="n#!!block;n#CreateChess#0" expanded="false" />
+            <element signature="n#!!block;n#AddFugure#0" expanded="false" />
+            <element signature="n#!!block;n#IsCellEmpty#0" expanded="false" />
+            <element signature="n#!!block;n#DrawMap#0" expanded="false" />
+            <element signature="n#!!block;n#PrintMassive#0" expanded="false" />
+            <element signature="e#3998#4086#0" expanded="false" />
+            <element signature="n#!!block;n#ChangeTeam#0" expanded="false" />
+            <element signature="n#!!block;n#SelectCell#0" expanded="false" />
+            <element signature="n#!!block;n#MakeMove#0" expanded="false" />
+            <element signature="n#!!block;n#RookStep#0" expanded="false" />
+            <element signature="n#!!block;n#BishopStep#0" expanded="false" />
+            <element signature="e#11706#12623#0" expanded="false" />
+            <element signature="e#12725#13622#0" expanded="false" />
+            <element signature="e#13727#14648#0" expanded="false" />
+            <element signature="e#14752#15653#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -326,7 +360,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1835" max-vertical-offset="2720">
           <caret line="260" column="12" selection-start-line="260" selection-start-column="12" selection-end-line="260" selection-end-column="12" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#CreateBoard#0" expanded="false" />
+            <element signature="n#!!block;n#CreateChess#0" expanded="false" />
+            <element signature="n#!!block;n#AddFugure#0" expanded="false" />
+            <element signature="n#!!block;n#IsCellEmpty#0" expanded="false" />
+            <element signature="n#!!block;n#DrawMap#0" expanded="false" />
+            <element signature="n#!!block;n#PrintMassive#0" expanded="false" />
+            <element signature="e#3998#4086#0" expanded="false" />
+            <element signature="n#!!block;n#ChangeTeam#0" expanded="false" />
+            <element signature="n#!!block;n#SelectCell#0" expanded="false" />
+            <element signature="n#!!block;n#MakeMove#0" expanded="false" />
+            <element signature="n#!!block;n#RookStep#0" expanded="false" />
+            <element signature="n#!!block;n#BishopStep#0" expanded="false" />
+            <element signature="e#11706#12623#0" expanded="false" />
+            <element signature="e#12725#13622#0" expanded="false" />
+            <element signature="e#13727#14648#0" expanded="false" />
+            <element signature="e#14752#15653#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -350,7 +401,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1360" max-vertical-offset="1819">
           <caret line="250" column="37" selection-start-line="250" selection-start-column="37" selection-end-line="250" selection-end-column="37" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#CreateBoard#0" expanded="false" />
+            <element signature="n#!!block;n#CreateChess#0" expanded="false" />
+            <element signature="n#!!block;n#AddFugure#0" expanded="false" />
+            <element signature="n#!!block;n#IsCellEmpty#0" expanded="false" />
+            <element signature="n#!!block;n#DrawMap#0" expanded="false" />
+            <element signature="n#!!block;n#PrintMassive#0" expanded="false" />
+            <element signature="e#3998#4086#0" expanded="false" />
+            <element signature="n#!!block;n#ChangeTeam#0" expanded="false" />
+            <element signature="n#!!block;n#SelectCell#0" expanded="false" />
+            <element signature="n#!!block;n#MakeMove#0" expanded="false" />
+            <element signature="n#!!block;n#RookStep#0" expanded="false" />
+            <element signature="n#!!block;n#BishopStep#0" expanded="false" />
+            <element signature="e#11706#12623#0" expanded="false" />
+            <element signature="e#12725#13622#0" expanded="false" />
+            <element signature="e#13727#14648#0" expanded="false" />
+            <element signature="e#14752#15653#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -374,7 +442,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1605">
           <caret line="221" column="1" selection-start-line="221" selection-start-column="1" selection-end-line="221" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#CreateBoard#0" expanded="false" />
+            <element signature="n#!!block;n#CreateChess#0" expanded="false" />
+            <element signature="n#!!block;n#AddFugure#0" expanded="false" />
+            <element signature="n#!!block;n#IsCellEmpty#0" expanded="false" />
+            <element signature="n#!!block;n#DrawMap#0" expanded="false" />
+            <element signature="n#!!block;n#PrintMassive#0" expanded="false" />
+            <element signature="e#3998#4086#0" expanded="false" />
+            <element signature="n#!!block;n#ChangeTeam#0" expanded="false" />
+            <element signature="n#!!block;n#SelectCell#0" expanded="false" />
+            <element signature="n#!!block;n#MakeMove#0" expanded="false" />
+            <element signature="n#!!block;n#RookStep#0" expanded="false" />
+            <element signature="n#!!block;n#BishopStep#0" expanded="false" />
+            <element signature="e#11706#12623#0" expanded="false" />
+            <element signature="e#12725#13622#0" expanded="false" />
+            <element signature="e#13727#14648#0" expanded="false" />
+            <element signature="e#14752#15653#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -398,7 +483,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1663" max-vertical-offset="2567">
           <caret line="184" column="43" selection-start-line="184" selection-start-column="43" selection-end-line="184" selection-end-column="43" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#CreateBoard#0" expanded="false" />
+            <element signature="n#!!block;n#CreateChess#0" expanded="false" />
+            <element signature="n#!!block;n#AddFugure#0" expanded="false" />
+            <element signature="n#!!block;n#IsCellEmpty#0" expanded="false" />
+            <element signature="n#!!block;n#DrawMap#0" expanded="false" />
+            <element signature="n#!!block;n#PrintMassive#0" expanded="false" />
+            <element signature="e#3998#4086#0" expanded="false" />
+            <element signature="n#!!block;n#ChangeTeam#0" expanded="false" />
+            <element signature="n#!!block;n#SelectCell#0" expanded="false" />
+            <element signature="n#!!block;n#MakeMove#0" expanded="false" />
+            <element signature="n#!!block;n#RookStep#0" expanded="false" />
+            <element signature="n#!!block;n#BishopStep#0" expanded="false" />
+            <element signature="e#11706#12623#0" expanded="false" />
+            <element signature="e#12725#13622#0" expanded="false" />
+            <element signature="e#13727#14648#0" expanded="false" />
+            <element signature="e#14752#15653#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -422,7 +524,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2448">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#CreateBoard#0" expanded="false" />
+            <element signature="n#!!block;n#CreateChess#0" expanded="false" />
+            <element signature="n#!!block;n#AddFugure#0" expanded="false" />
+            <element signature="n#!!block;n#IsCellEmpty#0" expanded="false" />
+            <element signature="n#!!block;n#DrawMap#0" expanded="false" />
+            <element signature="n#!!block;n#PrintMassive#0" expanded="false" />
+            <element signature="e#3998#4086#0" expanded="false" />
+            <element signature="n#!!block;n#ChangeTeam#0" expanded="false" />
+            <element signature="n#!!block;n#SelectCell#0" expanded="false" />
+            <element signature="n#!!block;n#MakeMove#0" expanded="false" />
+            <element signature="n#!!block;n#RookStep#0" expanded="false" />
+            <element signature="n#!!block;n#BishopStep#0" expanded="false" />
+            <element signature="e#11706#12623#0" expanded="false" />
+            <element signature="e#12725#13622#0" expanded="false" />
+            <element signature="e#13727#14648#0" expanded="false" />
+            <element signature="e#14752#15653#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -446,7 +565,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1650" max-vertical-offset="2160">
           <caret line="178" column="62" selection-start-line="178" selection-start-column="62" selection-end-line="178" selection-end-column="62" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#CreateBoard#0" expanded="false" />
+            <element signature="n#!!block;n#CreateChess#0" expanded="false" />
+            <element signature="n#!!block;n#AddFugure#0" expanded="false" />
+            <element signature="n#!!block;n#IsCellEmpty#0" expanded="false" />
+            <element signature="n#!!block;n#DrawMap#0" expanded="false" />
+            <element signature="n#!!block;n#PrintMassive#0" expanded="false" />
+            <element signature="e#3998#4086#0" expanded="false" />
+            <element signature="n#!!block;n#ChangeTeam#0" expanded="false" />
+            <element signature="n#!!block;n#SelectCell#0" expanded="false" />
+            <element signature="n#!!block;n#MakeMove#0" expanded="false" />
+            <element signature="n#!!block;n#RookStep#0" expanded="false" />
+            <element signature="n#!!block;n#BishopStep#0" expanded="false" />
+            <element signature="e#11706#12623#0" expanded="false" />
+            <element signature="e#12725#13622#0" expanded="false" />
+            <element signature="e#13727#14648#0" expanded="false" />
+            <element signature="e#14752#15653#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -462,7 +598,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="2771">
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#CreateBoard#0" expanded="false" />
+            <element signature="n#!!block;n#CreateChess#0" expanded="false" />
+            <element signature="n#!!block;n#AddFugure#0" expanded="false" />
+            <element signature="n#!!block;n#IsCellEmpty#0" expanded="false" />
+            <element signature="n#!!block;n#DrawMap#0" expanded="false" />
+            <element signature="n#!!block;n#PrintMassive#0" expanded="false" />
+            <element signature="e#3998#4086#0" expanded="false" />
+            <element signature="n#!!block;n#ChangeTeam#0" expanded="false" />
+            <element signature="n#!!block;n#SelectCell#0" expanded="false" />
+            <element signature="n#!!block;n#MakeMove#0" expanded="false" />
+            <element signature="n#!!block;n#RookStep#0" expanded="false" />
+            <element signature="n#!!block;n#BishopStep#0" expanded="false" />
+            <element signature="e#11706#12623#0" expanded="false" />
+            <element signature="e#12725#13622#0" expanded="false" />
+            <element signature="e#13727#14648#0" expanded="false" />
+            <element signature="e#14752#15653#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -478,7 +631,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1989" max-vertical-offset="2499">
           <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#CreateBoard#0" expanded="false" />
+            <element signature="n#!!block;n#CreateChess#0" expanded="false" />
+            <element signature="n#!!block;n#AddFugure#0" expanded="false" />
+            <element signature="n#!!block;n#IsCellEmpty#0" expanded="false" />
+            <element signature="n#!!block;n#DrawMap#0" expanded="false" />
+            <element signature="n#!!block;n#PrintMassive#0" expanded="false" />
+            <element signature="e#3998#4086#0" expanded="false" />
+            <element signature="n#!!block;n#ChangeTeam#0" expanded="false" />
+            <element signature="n#!!block;n#SelectCell#0" expanded="false" />
+            <element signature="n#!!block;n#MakeMove#0" expanded="false" />
+            <element signature="n#!!block;n#RookStep#0" expanded="false" />
+            <element signature="n#!!block;n#BishopStep#0" expanded="false" />
+            <element signature="e#11706#12623#0" expanded="false" />
+            <element signature="e#12725#13622#0" expanded="false" />
+            <element signature="e#13727#14648#0" expanded="false" />
+            <element signature="e#14752#15653#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -501,7 +671,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="357">
           <caret line="82" column="1" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#CreateBoard#0" expanded="false" />
+            <element signature="n#!!block;n#CreateChess#0" expanded="false" />
+            <element signature="n#!!block;n#AddFugure#0" expanded="false" />
+            <element signature="n#!!block;n#IsCellEmpty#0" expanded="false" />
+            <element signature="n#!!block;n#DrawMap#0" expanded="false" />
+            <element signature="n#!!block;n#PrintMassive#0" expanded="false" />
+            <element signature="e#3998#4086#0" expanded="false" />
+            <element signature="n#!!block;n#ChangeTeam#0" expanded="false" />
+            <element signature="n#!!block;n#SelectCell#0" expanded="false" />
+            <element signature="n#!!block;n#MakeMove#0" expanded="false" />
+            <element signature="n#!!block;n#RookStep#0" expanded="false" />
+            <element signature="n#!!block;n#BishopStep#0" expanded="false" />
+            <element signature="e#11706#12623#0" expanded="false" />
+            <element signature="e#12725#13622#0" expanded="false" />
+            <element signature="e#13727#14648#0" expanded="false" />
+            <element signature="e#14752#15653#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -575,9 +762,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5795982" vertical-offset="3223" max-vertical-offset="4335">
-          <caret line="283" column="0" selection-start-line="283" selection-start-column="0" selection-end-line="283" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.84090906" vertical-offset="1050" max-vertical-offset="1710">
+          <caret line="347" column="4" selection-start-line="347" selection-start-column="4" selection-end-line="347" selection-end-column="4" />
+          <folding>
+            <element signature="n#!!block;n#CreateBoard#0" expanded="false" />
+            <element signature="n#!!block;n#CreateChess#0" expanded="false" />
+            <element signature="n#!!block;n#AddFugure#0" expanded="false" />
+            <element signature="n#!!block;n#IsCellEmpty#0" expanded="false" />
+            <element signature="n#!!block;n#DrawMap#0" expanded="false" />
+            <element signature="n#!!block;n#PrintMassive#0" expanded="false" />
+            <element signature="e#3998#4086#0" expanded="false" />
+            <element signature="n#!!block;n#ChangeTeam#0" expanded="false" />
+            <element signature="n#!!block;n#SelectCell#0" expanded="false" />
+            <element signature="n#!!block;n#MakeMove#0" expanded="false" />
+            <element signature="n#!!block;n#RookStep#0" expanded="false" />
+            <element signature="n#!!block;n#BishopStep#0" expanded="false" />
+            <element signature="e#11706#12623#0" expanded="false" />
+            <element signature="e#12725#13622#0" expanded="false" />
+            <element signature="e#13727#14648#0" expanded="false" />
+            <element signature="e#14752#15653#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
