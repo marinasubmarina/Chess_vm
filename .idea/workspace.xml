@@ -46,8 +46,8 @@
       <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.67542505" vertical-offset="1078" max-vertical-offset="1725">
-              <caret line="357" column="75" selection-start-line="357" selection-start-column="75" selection-end-line="357" selection-end-column="75" />
+            <state vertical-scroll-proportion="0.33230293" vertical-offset="280" max-vertical-offset="1725">
+              <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
               <folding>
                 <element signature="n#!!block;n#CreateBoard#0" expanded="false" />
                 <element signature="n#!!block;n#CreateChess#0" expanded="false" />
@@ -751,8 +751,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67542505" vertical-offset="1078" max-vertical-offset="1725">
-          <caret line="357" column="75" selection-start-line="357" selection-start-column="75" selection-end-line="357" selection-end-column="75" />
+        <state vertical-scroll-proportion="0.33230293" vertical-offset="280" max-vertical-offset="1725">
+          <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
           <folding>
             <element signature="n#!!block;n#CreateBoard#0" expanded="false" />
             <element signature="n#!!block;n#CreateChess#0" expanded="false" />
