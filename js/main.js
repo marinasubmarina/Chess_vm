@@ -22,21 +22,30 @@ $(document).ready(function(){
                 RookStep();
             }
             if ($selectedCell.attr('type')=='Knight'){
-                KnightStep(-2, -1);
-                KnightStep(-2, 1);
+                KnightKingStep(-2, -1);
+                KnightKingStep(-2, 1);
 
-                KnightStep(2, 1);
-                KnightStep(2, -1);
+                KnightKingStep(2, 1);
+                KnightKingStep(2, -1);
 
-                KnightStep(-1, 2);
-                KnightStep(1, 2);
+                KnightKingStep(-1, 2);
+                KnightKingStep(1, 2);
 
-                KnightStep(-1, -2);
-                KnightStep(1, -2);
+                KnightKingStep(-1, -2);
+                KnightKingStep(1, -2);
 
             }
             if ($selectedCell.attr('type')=='King'){
-                KingStep();
+                KnightKingStep(-1, -1);
+                KnightKingStep(-1, 0);
+                KnightKingStep(-1, 1);
+
+                KnightKingStep(1, -1);
+                KnightKingStep(1, 0);
+                KnightKingStep(1, 1);
+
+                KnightKingStep(0, -1);
+                KnightKingStep(0, 1);
             }
         }
         else{
@@ -375,8 +384,8 @@ function BishopStep(){
         }
     }
 }
-//кони
-function KnightStep(i,j){
+//кони и короли
+function KnightKingStep(i,j){
     var X = ($selectedCell.attr('x') - (-i));
     var Y = ($selectedCell.attr('y') - (-j));
     var target = ($('[x=' + X + ']' + '[y=' + Y + ']'));
@@ -389,75 +398,3 @@ function KnightStep(i,j){
             }
         }
     }
-
-//король
-function KingStep(){
-    //вверх
-    if ((($selectedCell.attr('x')-1)>-1)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + $selectedCell.attr('y')+ ']'))){
-        $('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + $selectedCell.attr('y')+ ']').addClass('allowedStep');
-    }else{
-        if (($('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + $selectedCell.attr('y') + ']')).attr('color')==currentTeam.enemy){
-            $('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + $selectedCell.attr('y')+ ']').addClass('allowedStep').addClass('attack');
-        }
-    }
-    //вниз
-    if ((($selectedCell.attr('x')-(-1))<8)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + $selectedCell.attr('y')+ ']'))){
-        $('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + $selectedCell.attr('y')+ ']').addClass('allowedStep');
-    }else{
-        if (($('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + $selectedCell.attr('y') + ']')).attr('color')==currentTeam.enemy){
-            $('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + $selectedCell.attr('y')+ ']').addClass('allowedStep').addClass('attack');
-        }
-    }
-    // вправо
-    if ((($selectedCell.attr('y')-(-1))<8)&&(IsCellEmpty('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']'))){
-        $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']').addClass('allowedStep');
-    }else{
-        if (($('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-(-1)) + ']')).attr('color')==currentTeam.enemy){
-            $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']').addClass('allowedStep').addClass('attack');
-        }
-    }
-
-    //влево
-    if ((($selectedCell.attr('y')-1)>-1)&&(IsCellEmpty('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']'))){
-        $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']').addClass('allowedStep');
-    }else{
-        if (($('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-1) + ']')).attr('color')==currentTeam.enemy){
-            $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']').addClass('allowedStep').addClass('attack');
-        }
-    }
-
-    // / up
-    if ((($selectedCell.attr('x')-1)>-1)&&(($selectedCell.attr('y')-(-1))<8)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']'))){
-        $('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']').addClass('allowedStep');
-    }else{
-        if (($('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + ($selectedCell.attr('y')-(-1)) + ']')).attr('color')==currentTeam.enemy){
-            $('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']').addClass('allowedStep').addClass('attack');
-        }
-    }
-    // \up
-    if ((($selectedCell.attr('x')-1)>-1)&&(($selectedCell.attr('y')-1)>-1)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']'))){
-        $('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']').addClass('allowedStep');
-    }else{
-        if (($('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + ($selectedCell.attr('y')-1) + ']')).attr('color')==currentTeam.enemy){
-            $('[x=' + ($selectedCell.attr('x')-1) + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']').addClass('allowedStep').addClass('attack');
-        }
-    }
-
-    // \down
-    if ((($selectedCell.attr('x')-(-1))<8)&&(($selectedCell.attr('y')-(-1))<8)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']'))){
-        $('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']').addClass('allowedStep');
-    }else{
-        if (($('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + ($selectedCell.attr('y')-(-1)) + ']')).attr('color')==currentTeam.enemy){
-            $('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + ($selectedCell.attr('y')-(-1))+ ']').addClass('allowedStep').addClass('attack');
-        }
-    }
-
-    // /down
-    if ((($selectedCell.attr('x')-(-1))<8)&&(($selectedCell.attr('y')-1)>-1)&&(IsCellEmpty('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']'))){
-        $('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']').addClass('allowedStep');
-    }else{
-        if (($('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + ($selectedCell.attr('y')-1) + ']')).attr('color')==currentTeam.enemy){
-            $('[x=' + ($selectedCell.attr('x')-(-1)) + ']' + '[y=' + ($selectedCell.attr('y')-1)+ ']').addClass('allowedStep').addClass('attack');
-        }
-    }
-}
