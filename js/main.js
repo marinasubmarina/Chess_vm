@@ -12,7 +12,7 @@ $(document).ready(function(){
                 PawnStep();
             }
             if ($selectedCell.attr('type')=='Rook'){
-                RookStep();
+                RookStep(-1,0,-1, 0);
             }
             if ($selectedCell.attr('type')=='Bishop'){
                 BishopStep();
@@ -253,78 +253,27 @@ function PawnStep(){
     }
 }
 //ладьи
-function RookStep(){
-    // по вертикали
-    // вверх (for white)
-    var i =1;
-    if ($selectedCell.attr('x') !=0) {
-        while ((($selectedCell.attr('x') - i)!=-1)&&(IsCellEmpty(('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']')))) {
-            $('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
-            i++;
-        }
-        // attack (not end of board + not empty + enemy)
-        if ((($selectedCell.attr('x') - i)!=-1)&&(IsCellEmpty(('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']'))==false)&&(($('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']')).attr('color')==currentTeam.enemy)){
-            $('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('attack').addClass('allowedStep');
-        }
-    }
-    //вниз
-    var i =1;
-    if ($selectedCell.attr('x') !=7){
-        while ((($selectedCell.attr('x') - (-i))!=8)&&(IsCellEmpty(('[x=' + ($selectedCell.attr('x') - (-i)) + ']' + '[y=' + $selectedCell.attr('y') + ']')))) {
-            $('[x=' + ($selectedCell.attr('x') - (-i)) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
-            i++;
-        }
-        //attack
-        if ((($selectedCell.attr('x') - (-i))!=8)&&(IsCellEmpty(('[x=' + ($selectedCell.attr('x') - (-i)) + ']' + '[y=' + $selectedCell.attr('y') + ']'))==false)&&(($('[x=' + ($selectedCell.attr('x') - (-i)) + ']' + '[y=' + $selectedCell.attr('y') + ']')).attr('color')==currentTeam.enemy)){
-            $('[x=' + ($selectedCell.attr('x') - (-i)) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('attack').addClass('allowedStep');
-        }
-    }
+function RookStep(i,j,a,b) {
+    var X = ($selectedCell.attr('x') - (-i));
+    var Y = ($selectedCell.attr('y') - (-j));
+    var target = ($('[x=' + X + ']' + '[y=' + Y + ']'));
 
-    // по горизонтали
-    // вправо (for white)
-    var i = 1;
-    if ($selectedCell.attr('y') !=7){
-        while ((($selectedCell.attr('y') - (-i))!=8)&&(IsCellEmpty(('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -(-i))+ ']')))) {
-            $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') - (-i))+ ']').addClass('allowedStep');
+    if ($selectedCell.attr('x') != b) {
+        while ((X != a) && (IsCellEmpty('[x=' + X + ']' + '[y=' + Y + ']'))) {
+            target.addClass('allowedStep');
             i++;
-        }
-        //attack
-        if ((($selectedCell.attr('y') - (-i))!=8)&&(IsCellEmpty(('[x=' + $selectedCell.attr('x') + ']' + '[y=' + $selectedCell.attr('y') + ']'))==false)&&(($('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y')-(-i))+ ']')).attr('color')==currentTeam.enemy)){
-            $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') -(-i))+ ']').addClass('attack').addClass('allowedStep');
+            console.log('x= ', X, ' y= ', Y);
+            console.log('i = ', i);
         }
     }
+     //attack
+ /*    if ((X!=a)&&(Y!=a)&&(IsCellEmpty(('[x=' + X + ']' + '[y=' + Y + ']'))==false)&&(target.attr('color')==currentTeam.enemy)){
+     target.addClass('attack').addClass('allowedStep');
+     }
+     */
 
-    // влево
-    var i = 1;
-    if ($selectedCell.attr('y') !=0) {
-        while ((($selectedCell.attr('y') - i) != -1) && (IsCellEmpty(('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') - i) + ']')))) {
-            $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') - i) + ']').addClass('allowedStep');
-            i++;
-        }
-        if ((($selectedCell.attr('y') - i) != -1) && (IsCellEmpty(('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') - i) + ']')) == false) && (($('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') - i) + ']')).attr('color') == currentTeam.enemy)) {
-            $('[x=' + $selectedCell.attr('x') + ']' + '[y=' + ($selectedCell.attr('y') - i) + ']').addClass('attack').addClass('allowedStep');
-        }
-    }
-}
-// все бы хорошо. но считает только 1 клетку вниз.
-/*
- vertical (0, -1, 1);
- vertical (7, 8, (-1));
-function vertical( a , b , i){
-    if ($selectedCell.attr('x') !=a){
-        while ((($selectedCell.attr('x') - i)!=b)&&(IsCellEmpty(('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']')))) {
-            $('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
-            i++;
-            console.log(($selectedCell.attr('x') - i));
-            console.log(i);
-        }
-        //attack
-        if ((($selectedCell.attr('x') - i)!=b)&&(IsCellEmpty(('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']'))==false)&&(($('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']')).attr('color')==currentTeam.enemy)){
-            $('[x=' + ($selectedCell.attr('x') - i) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('attack').addClass('allowedStep');
-        }
-    }
-}
-*/
+ }
+
 
 //слоны
 function BishopStep(){
@@ -390,11 +339,11 @@ function KnightKingStep(i,j){
     var Y = ($selectedCell.attr('y') - (-j));
     var target = ($('[x=' + X + ']' + '[y=' + Y + ']'));
 
-        if ((X > -1) && (X < 8) && (Y > -1) && (Y < 8) && (IsCellEmpty('[x=' + X + ']' + '[y=' + Y + ']'))) {
+    if ((X > -1) && (X < 8) && (Y > -1) && (Y < 8) && (IsCellEmpty('[x=' + X + ']' + '[y=' + Y + ']'))) {
             target.addClass('allowedStep');
-        } else {
-            if (target.attr('color') == currentTeam.enemy) {
-                target.addClass('allowedStep').addClass('attack');
+    } else {
+        if (target.attr('color') == currentTeam.enemy) {
+            target.addClass('allowedStep').addClass('attack');
             }
         }
     }
