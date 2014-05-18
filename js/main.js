@@ -5,7 +5,13 @@ $(document).ready(function(){
         if ($(this).attr('color')==currentTeam.current){
             SelectCell($(this));
             if ($selectedCell.attr('type')=='pawn'){
-                PawnStep();
+                if (currentTeam.current == "white") {
+                    PawnStep(-1, 1, 6 , -1);
+                    PawnStep(-1, -1, 6, -1);
+                }else{
+                    PawnStep(1, 1 , 1 , 8);
+                    PawnStep(1, -1, 1 , 8);
+                    }
             }
             if ($selectedCell.attr('type')=='Rook'){
                 RookBishopStep(-1,0,-1); //вверх В не важно
@@ -178,47 +184,17 @@ function DropAllowedStep(){
 }
 //Ходы шахмат:
 //пешки
-function PawnStep(){
-    if ($selectedCell.attr('color') == 'white') {
-
-        if ($selectedCell.attr('x') == 6) {
-            if ($('[x=' + ($selectedCell.attr('x') - 2) + ']' + '[y=' + $selectedCell.attr('y') + ']')[0].innerText == ''){
-            $('[x=' + ($selectedCell.attr('x') - 2) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
-            }
-        }
-        // проверка. чтобы не выделял занятые клетки как возможность хода.
-        if ($('[x=' + ($selectedCell.attr('x') - 1) + ']' + '[y=' + $selectedCell.attr('y') + ']')[0].innerText == ''){
-            $('[x=' + ($selectedCell.attr('x') - 1) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
-        }
-
-        //левая диагональ   \.
-        if ( $('[x=' + ($selectedCell.attr('x') - 1) + ']' + '[y=' + ($selectedCell.attr('y')-1) + ']').attr('color')=='black') {
-            $('[x=' + ($selectedCell.attr('x') - 1) + ']' + '[y=' + ($selectedCell.attr('y') - 1) + ']').addClass('allowedStep').addClass('attack');
-        }
-        //правая диагональ ./
-        if ( $('[x=' + ($selectedCell.attr('x') - 1) + ']' + '[y=' + ($selectedCell.attr('y')-(-1)) + ']').attr('color')=='black') {
-            $('[x=' + ($selectedCell.attr('x') - 1) + ']' + '[y=' + ($selectedCell.attr('y') - (-1)) + ']').addClass('allowedStep').addClass('attack');
+function PawnStep(i,j, a , b) {
+    if ($selectedCell.attr('x') == a) {
+        if (IsCellEmpty($('[x=' + ($selectedCell.attr('x') - (-2 * i)) + ']' + '[y=' + $selectedCell.attr('y') + ']'))) {
+            $('[x=' + ($selectedCell.attr('x') -(- 2 * i)) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
         }
     }
-    if($selectedCell.attr('color') == 'black') {
-        if ($selectedCell.attr('x') == 1) {
-            if ($('[x=' +($selectedCell.attr('x')-(-2))+ ']' + '[y=' + $selectedCell.attr('y') + ']')[0].innerText == '') {
-            $('[x=' +($selectedCell.attr('x')-(-2))+ ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
-            }
-        }
-        // проверка. чтобы не выделял занятые клетки как возможность хода.
-        if ($('[x=' + ($selectedCell.attr('x') - (-1)) + ']' + '[y=' + $selectedCell.attr('y') + ']')[0].innerText == '') {
-            $('[x=' + ($selectedCell.attr('x') - (-1)) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
-        }
-        // влево вниз  /'
-        if ( $('[x=' + ($selectedCell.attr('x') - (-1)) + ']' + '[y=' + ($selectedCell.attr('y')-1) + ']').attr('color')=='white') {
-            $('[x=' + ($selectedCell.attr('x') - (-1)) + ']' + '[y=' + ($selectedCell.attr('y') - 1) + ']').addClass('allowedStep').addClass('attack');
-        }
-
-        // вправо вниз '\
-        if ( $('[x=' + ($selectedCell.attr('x') - (- 1)) + ']' + '[y=' + ($selectedCell.attr('y')-(-1)) + ']').attr('color')=='white') {
-            $('[x=' + ($selectedCell.attr('x') - (-1)) + ']' + '[y=' + ($selectedCell.attr('y') - (-1)) + ']').addClass('allowedStep').addClass('attack');
-        }
+    if ( ( ($selectedCell.attr('x') - (-i)) != b ) && (IsCellEmpty($('[x=' + ($selectedCell.attr('x') - (-i)) + ']' + '[y=' + $selectedCell.attr('y') + ']')))){
+        $('[x=' + ($selectedCell.attr('x') - (-i)) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
+    }
+    if ( $('[x=' + ($selectedCell.attr('x') - (-i)) + ']' + '[y=' + ($selectedCell.attr('y')- (-j)) + ']').attr('color')==currentTeam.enemy) {
+        $('[x=' + ($selectedCell.attr('x') - (-i)) + ']' + '[y=' + ($selectedCell.attr('y') - (-j)) + ']').addClass('allowedStep').addClass('attack');
     }
 }
 //ладьи и слоны
