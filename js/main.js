@@ -59,6 +59,8 @@ $(document).ready(function(){
         else{
             if ($selectedCell != null){
                 MakeMove($(this));
+
+
             }
         }
     })
@@ -167,24 +169,69 @@ function SelectCell(cell){
     $selectedCell = cell;
     cell.toggleClass('selected');
 }
-function MakeMove(_targetcCell){
+function MakeMove(_targetcCell) {
     if (_targetcCell.hasClass('allowedStep')) {
-        _targetcCell.attr('color', $selectedCell.attr('color')).attr('type', $selectedCell.attr('type'))
-        _targetcCell[0].innerText = $selectedCell[0].innerText;
-        $selectedCell.removeAttr('color').removeAttr('type');
-        $selectedCell[0].innerText = '';
-        $selectedCell.toggleClass('selected');
-        $selectedCell = null;
-        ChangeTeam();
-        DropAllowedStep();
+        // Превращение пешки
+        if (($selectedCell.attr('type') == 'pawn')&&((_targetcCell.attr('x') == 7) || (_targetcCell.attr('x')) == 0)) {
+            var cell = _targetcCell;
+            $("#dialog").dialog({
+                title: "Превращение пешки",
+                modal: true,
+                buttons: {
+                    "Применить": function () {
+                        $(this).dialog("close");
+                        var newType = $('#dialog input:radio:checked').val();
+                        cell.attr('color', $selectedCell.attr('color')).attr('type', newType );
+                        if (cell.attr('color')== 'white') {
+                            if (newType == 'Rook') {
+                                cell[0].innerText = '♖';
+                            }else if (newType == 'Bishop') {
+                                cell[0].innerText = '♗';
+                            }else if (newType == 'Queen') {
+                                cell[0].innerText = '♕';
+                            }else if (newType == 'Knight') {
+                                cell[0].innerText = '♘';
+                            }else if (newType == 'pawn'){
+                                cell[0].innerText = $selectedCell[0].innerText;
+                            }
+                        }else{
+                            if (newType == 'Rook') {
+                                cell[0].innerText = '♜';
+                            }else if (newType == 'Bishop') {
+                                cell[0].innerText = '♝';
+                            }else if (newType == 'Queen') {
+                                cell[0].innerText = '♛';
+                            }else if (newType == 'Knight') {
+                                cell[0].innerText = '♞';
+                            }else if (newType == 'pawn'){
+                                cell[0].innerText = $selectedCell[0].innerText;
+                            }
+                        }
+                        Move();
+                    }
+                }
+            })
+        }else {
+            _targetсCell.attr('color', $selectedCell.attr('color')).attr('type', $selectedCell.attr('type'))
+            _targetcCell[0].innerText = $selectedCell[0].innerText;
+            Move();
+        }
     }
+}
+function Move(){
+    $selectedCell.removeAttr('color').removeAttr('type');
+    $selectedCell[0].innerText = '';
+    $selectedCell.toggleClass('selected');
+    $selectedCell = null;
+    ChangeTeam();
+    DropAllowedStep();
 }
 function DropAllowedStep(){
     $('div').removeClass('allowedStep').removeClass('attack');
 }
 //Ходы шахмат:
 //пешки
-function PawnStep(i,j, a , b) {
+function PawnStep(i,j,a,b) {
     if ($selectedCell.attr('x') == a) {
         if (IsCellEmpty($('[x=' + ($selectedCell.attr('x') - (-2 * i)) + ']' + '[y=' + $selectedCell.attr('y') + ']'))) {
             $('[x=' + ($selectedCell.attr('x') -(- 2 * i)) + ']' + '[y=' + $selectedCell.attr('y') + ']').addClass('allowedStep');
