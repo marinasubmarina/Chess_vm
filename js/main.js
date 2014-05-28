@@ -1,70 +1,79 @@
+var GameStarted = true;
 $(document).ready(function(){
+    $("#NewGameButton").hide();
     CreateBoard(8);
     CreateChess();
     $('.block').on('click',function(){
-        if ($(this).attr('color')==currentTeam.current){
-            SelectCell($(this));
-            if ($selectedCell.attr('type')=='pawn'){
-                if (currentTeam.current == "white") {
-                    PawnStep(-1, 1, 6 , -1);
-                    PawnStep(-1, -1, 6, -1);
-                }else{
-                    PawnStep(1, 1 , 1 , 8);
-                    PawnStep(1, -1, 1 , 8);
-                    }
+        if (GameStarted===true) {
+            if ($(this).attr('color') == currentTeam.current) {
+                DropAllowedStep();
+                SelectCell($(this));
+                TypeStep();
             }
-            if ($selectedCell.attr('type')=='Rook'){
-                RookBishopStep(-1,0,-1); //вверх В не важно
-                RookBishopStep(1,0,8); //вниз В не важно
-                RookBishopStep(0,1,8,8); //вправо А не важно
-                RookBishopStep(0,-1,8,-1);//влево А не важно
-            }
-            if ($selectedCell.attr('type')=='Bishop'){
-                RookBishopStep(-1,1,-1,8); //вверх-вправо
-                RookBishopStep(-1,-1,-1,-1); //вверх-влево
-                RookBishopStep(1,1,8,8); //вниз-вправо
-                RookBishopStep(1,-1,8,-1);//вниз-влево
-            }
-            if ($selectedCell.attr('type')=='Queen'){
-                RookBishopStep(-1,0,-1); //вверх В не важно
-                RookBishopStep(1,0,8); //вниз В не важно
-                RookBishopStep(0,1,8,8); //вправо А не важно
-                RookBishopStep(0,-1,8,-1);//влево А не важно
-                RookBishopStep(-1,1,-1,8); //вверх-вправо
-                RookBishopStep(-1,-1,-1,-1); //вверх-влево
-                RookBishopStep(1,1,8,8); //вниз-вправо
-                RookBishopStep(1,-1,8,-1);//вниз-влево
-            }
-            if ($selectedCell.attr('type')=='Knight'){
-                KnightKingStep(-2, -1);
-                KnightKingStep(-2, 1);
-                KnightKingStep(2, 1);
-                KnightKingStep(2, -1);
-                KnightKingStep(-1, 2);
-                KnightKingStep(1, 2);
-                KnightKingStep(-1, -2);
-                KnightKingStep(1, -2);
-            }
-            if ($selectedCell.attr('type')=='King'){
-                KnightKingStep(-1, -1);
-                KnightKingStep(-1, 0);
-                KnightKingStep(-1, 1);
-                KnightKingStep(1, -1);
-                KnightKingStep(1, 0);
-                KnightKingStep(1, 1);
-                KnightKingStep(0, -1);
-                KnightKingStep(0, 1);
-            }
-        }
-        else{
-            if ($selectedCell != null){
-                MakeMove($(this));
-
-
+            else {
+                if ($selectedCell != null) {
+                    MakeMove($(this));
+                }
             }
         }
     })
+    $("#NewGameButton").on('click', function(){
+        location.reload();
+    })
 })
+function TypeStep(){
+    if ($selectedCell.attr('type')=='pawn'){
+        if (currentTeam.current == "white") {
+            PawnStep(-1, 1, 6 , -1);
+            PawnStep(-1, -1, 6, -1);
+        }else{
+            PawnStep(1, 1 , 1 , 8);
+            PawnStep(1, -1, 1 , 8);
+        }
+    }
+    if ($selectedCell.attr('type')=='Rook'){
+        RookBishopStep(-1,0,-1); //вверх В не важно
+        RookBishopStep(1,0,8); //вниз В не важно
+        RookBishopStep(0,1,8,8); //вправо А не важно
+        RookBishopStep(0,-1,8,-1);//влево А не важно
+    }
+    if ($selectedCell.attr('type')=='Bishop'){
+        RookBishopStep(-1,1,-1,8); //вверх-вправо
+        RookBishopStep(-1,-1,-1,-1); //вверх-влево
+        RookBishopStep(1,1,8,8); //вниз-вправо
+        RookBishopStep(1,-1,8,-1);//вниз-влево
+    }
+    if ($selectedCell.attr('type')=='Queen'){
+        RookBishopStep(-1,0,-1); //вверх В не важно
+        RookBishopStep(1,0,8); //вниз В не важно
+        RookBishopStep(0,1,8,8); //вправо А не важно
+        RookBishopStep(0,-1,8,-1);//влево А не важно
+        RookBishopStep(-1,1,-1,8); //вверх-вправо
+        RookBishopStep(-1,-1,-1,-1); //вверх-влево
+        RookBishopStep(1,1,8,8); //вниз-вправо
+        RookBishopStep(1,-1,8,-1);//вниз-влево
+    }
+    if ($selectedCell.attr('type')=='Knight'){
+        KnightKingStep(-2, -1);
+        KnightKingStep(-2, 1);
+        KnightKingStep(2, 1);
+        KnightKingStep(2, -1);
+        KnightKingStep(-1, 2);
+        KnightKingStep(1, 2);
+        KnightKingStep(-1, -2);
+        KnightKingStep(1, -2);
+    }
+    if ($selectedCell.attr('type')=='King'){
+        KnightKingStep(-1, -1);
+        KnightKingStep(-1, 0);
+        KnightKingStep(-1, 1);
+        KnightKingStep(1, -1);
+        KnightKingStep(1, 0);
+        KnightKingStep(1, 1);
+        KnightKingStep(0, -1);
+        KnightKingStep(0, 1);
+    }
+}
 function CreateBoard(_boardCount){
     var board = $('#board');
     for (var i = 0; i < _boardCount; i++) {
@@ -149,6 +158,7 @@ var currentTeam = {
     enemy:  'black'
 }
 function ChangeTeam(){
+    isCheck();
     if (currentTeam.current == 'white') {
         currentTeam.current='black';
         currentTeam.enemy='white';
@@ -157,12 +167,13 @@ function ChangeTeam(){
         currentTeam.current='white';
         currentTeam.enemy='black';
     }
+    isMate();
 }
 var $selectedCell;
 var is_selected=false;
 function SelectCell(cell){
     is_selected = true;
-    DropAllowedStep();
+  //  DropAllowedStep();
     if( $selectedCell !=null){
         $selectedCell.toggleClass('selected');
     }
@@ -212,7 +223,7 @@ function MakeMove(_targetcCell) {
                 }
             })
         }else {
-            _targetсCell.attr('color', $selectedCell.attr('color')).attr('type', $selectedCell.attr('type'))
+            _targetcCell.attr('color', $selectedCell.attr('color')).attr('type', $selectedCell.attr('type'))
             _targetcCell[0].innerText = $selectedCell[0].innerText;
             Move();
         }
@@ -270,4 +281,45 @@ function KnightKingStep(i,j){
             target.addClass('allowedStep').addClass('attack');
             }
     }
+}
+
+//шах
+function isCheck(){
+    $myTeam = $('div[color="'+currentTeam.current +'"]'); // все дифы нашего цвета.
+    $myTeam.each(function () {
+        if ($(this).attr('color')==currentTeam.current){
+            SelectCell($(this));
+            TypeStep();
+        }
+    });
+    var king=($('div[type="King"]'+'[color="'+currentTeam.enemy+'"]')); // нахождение вражеского короля
+    if (king.hasClass('allowedStep')){
+        DropAllowedStep();
+        alert('Check to '+currentTeam.enemy+'! ');
+    }
+    $selectedCell.removeClass('selected');
+    $selectedCell=null;
+    DropAllowedStep()
+}
+function isMate(){
+    $myTeam = $('div[color="'+currentTeam.current +'"]');
+    $myTeam.each(function () {
+        if ($(this).attr('color')==currentTeam.current){
+            SelectCell($(this));
+            TypeStep();
+        }
+    });
+    var king=($('div[type="King"]'+'[color="'+currentTeam.enemy+'"]'));
+    if (king.hasClass('allowedStep')){
+        DropAllowedStep();
+
+        GameStarted = false;
+        $('#NewGameButton').show();
+
+        alert('CheckMate! '+currentTeam.current+' win');
+    }
+    $selectedCell.removeClass('selected');
+    $selectedCell=null;
+    DropAllowedStep()
+
 }
