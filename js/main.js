@@ -158,7 +158,7 @@ var currentTeam = {
     enemy:  'black'
 }
 function ChangeTeam(){
-    isCheck();
+    isCheck(checkStr);
     if (currentTeam.current == 'white') {
         currentTeam.current='black';
         currentTeam.enemy='white';
@@ -167,7 +167,7 @@ function ChangeTeam(){
         currentTeam.current='white';
         currentTeam.enemy='black';
     }
-    isMate();
+    isCheck(mateStr,1);
 }
 var $selectedCell;
 var is_selected=false;
@@ -282,9 +282,10 @@ function KnightKingStep(i,j){
             }
     }
 }
-
-//шах
-function isCheck(){
+var checkStr = 'Check to ';
+var mateStr = 'Checkmate to ';
+//шах и мат
+function isCheck(str,i){
     $myTeam = $('div[color="'+currentTeam.current +'"]'); // все дифы нашего цвета.
     $myTeam.each(function () {
         if ($(this).attr('color')==currentTeam.current){
@@ -295,31 +296,15 @@ function isCheck(){
     var king=($('div[type="King"]'+'[color="'+currentTeam.enemy+'"]')); // нахождение вражеского короля
     if (king.hasClass('allowedStep')){
         DropAllowedStep();
-        alert('Check to '+currentTeam.enemy+'! ');
-    }
-    $selectedCell.removeClass('selected');
-    $selectedCell=null;
-    DropAllowedStep()
-}
-function isMate(){
-    $myTeam = $('div[color="'+currentTeam.current +'"]');
-    $myTeam.each(function () {
-        if ($(this).attr('color')==currentTeam.current){
-            SelectCell($(this));
-            TypeStep();
+        function newGame(i){
+        if ( i == 1) {
+            GameStarted = false;
+            $('#NewGameButton').show();
+            }
         }
-    });
-    var king=($('div[type="King"]'+'[color="'+currentTeam.enemy+'"]'));
-    if (king.hasClass('allowedStep')){
-        DropAllowedStep();
-
-        GameStarted = false;
-        $('#NewGameButton').show();
-
-        alert('CheckMate! '+currentTeam.current+' win');
+        newGame(i);
+        alert(str + currentTeam.enemy+'! ');
     }
     $selectedCell.removeClass('selected');
     $selectedCell=null;
-    DropAllowedStep()
-
 }
