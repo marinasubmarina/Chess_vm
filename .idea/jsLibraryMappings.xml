@@ -2,7 +2,6 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$/js/main.js" libraries="{Node.js Globals}" />
-    <file url="file://$PROJECT_DIR$/js/node_modules/socket.io/lib/socket.io.js" libraries="{Node.js Globals}" />
     <file url="file://$PROJECT_DIR$/js/nodejs_server.js" libraries="{Node.js Globals}" />
   </component>
 </project>

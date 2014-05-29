@@ -1,3 +1,5 @@
+// var socket = io.connect('http://localhost:8000');
+
 var GameStarted = true;
 $(document).ready(function(){
     $("#NewGameButton").hide();
